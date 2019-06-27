@@ -6,7 +6,7 @@
 # How to add a link to a page
 
 
-This example shows the PDF Document Creation API that is used to programmatically add a link to a page.<br><br>The Universal Subscription or an additional Document Server Subscription is required to use this example in production code. Please refer to the <a href="https://www.devexpress.com/Subscriptions/">DevExpress Subscription</a> page for pricing information.
+This example shows the PDF Document Creation API that is used to programmatically add a link to a page.<br><br>The Universal Subscription or an additional Office File API Subscription is required to use this example in production code. Please refer to the <a href="https://www.devexpress.com/Subscriptions/">DevExpress Subscription</a> page for pricing information.
 
 
 <h3>Description</h3>
