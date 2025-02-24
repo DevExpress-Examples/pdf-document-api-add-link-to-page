@@ -1,5 +1,5 @@
-Imports DevExpress.Pdf
 Imports System.Drawing
+Imports DevExpress.Pdf
 
 Namespace AddLinkToPage
 
@@ -7,25 +7,36 @@ Namespace AddLinkToPage
 
         Shared Sub Main(ByVal args As String())
             Using processor As PdfDocumentProcessor = New PdfDocumentProcessor()
-                ' Create an empty document.
-                processor.CreateEmptyDocument("..\..\Result.pdf")
-                ' Create and draw graphics.
-                Using graphics As PdfGraphics = processor.CreateGraphics()
-                    DrawGraphics(graphics)
-                    ' Create a link to a page specifying link area, the page number and X, Y destinations.
-                    graphics.AddLinkToPage(New RectangleF(180, 160, 480, 30), 1, 168, 230)
-                    ' Render a page with graphics.
-                    processor.RenderNewPage(PdfPaperSize.Letter, graphics)
-                End Using
+                ' Load a document
+                processor.LoadDocument("Demo.pdf")
+
+                ' Access third page properties
+                Dim pageFacade As PdfPageFacade = processor.DocumentFacade.Pages(2)
+
+                ' Create a Fit destination that refers to the third page
+                Dim destination As PdfFitDestination = pageFacade.CreateFitDestination()
+
+                ' Find a specific phrase
+                Dim linkText As String = "JBIG2 images"
+                Dim linkSearchResults As PdfTextSearchResults = processor.FindText(linkText)
+
+                ' If the phrase is found, obtain its bounding rectangle
+                If linkSearchResults.Status = PdfTextSearchStatus.Found Then
+                    Dim linkRectangle As PdfRectangle = linkSearchResults.Rectangles(0).BoundingRectangle
+
+                    ' Access first page properties
+                    Dim linkPageFacade As PdfPageFacade = processor.DocumentFacade.Pages(linkSearchResults.PageNumber - 1)
+
+                    'Create a link annotation associated with the bounding rectangle
+                    ' and destination
+                    Dim linkAnnotation As PdfLinkAnnotationFacade = linkPageFacade.AddLinkAnnotation(linkRectangle, destination)
+                    linkAnnotation.HighlightMode = PdfAnnotationHighlightingMode.Push
+                End If
+                ' Save the result
+                processor.SaveDocument("out.pdf")
             End Using
+            Process.Start(New ProcessStartInfo("out.pdf") With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub DrawGraphics(ByVal graphics As PdfGraphics)
-            ' Draw a text line on the page. 
-            Dim black As SolidBrush = CType(Brushes.Black, SolidBrush)
-            Using font As Font = New Font("Times New Roman", 32, FontStyle.Bold)
-                graphics.DrawString("PDF Document Processor", font, black, 180, 150)
-            End Using
-        End Sub
     End Class
 End Namespace

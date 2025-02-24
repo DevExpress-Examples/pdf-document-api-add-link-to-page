@@ -4,23 +4,33 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [Program.cs](./CS/AddLinkToPage/Program.cs) (VB: [Program.vb](./VB/AddLinkToPage/Program.vb))
-<!-- default file list end -->
 # PDF Document API - Add a Link to a Page
 
+This example shows the PDF Document Facade that adds a link to a destination that displays the third page with the Zoom to Page Level view.
 
-This example shows the PDF Document Creation API that is used to programmatically add a link to a page.<br><br>The Universal Subscription or an additional Office File API Subscription is required to use this example in production code. Please refer to the <a href="https://www.devexpress.com/Subscriptions/">DevExpress Subscription</a> page for pricing information.
+> [!Important]  
+> The Universal Subscription or an additional Office File API Subscription is required to use this example in production code. For pricing information, please refer to the [DevExpress Subscription](https://www.devexpress.com/Subscriptions/) page.  
 
+## Implementation Details
 
-<h3>Description</h3>
+The [PdfPageFacade](https://docs.devexpress.com/OfficeFileAPI/DevExpress.Pdf.PdfPageFacade) object allows you to perform various operations on a PDF page without access to its inner structure. Call the [CreateFitDestination](https://docs.devexpress.com/OfficeFileAPI/DevExpress.Pdf.PdfPageFacade.CreateFitDestination) to create a destination. This destination fits the entire page to the document window both horizontally and vertically (**Zoom to Page Level** view) when referencing to this page.
 
-To add a link to a page using the PDF Creation API:<br>-&nbsp; Create an empty document with no pages by calling one of the <a href="https://documentation.devexpress.com/#DocumentServer/DevExpressPdfPdfDocumentProcessor_CreateEmptyDocumenttopic(FQQ7tw)">PdfDocumentProcessor.CreateEmptyDocument</a> overload methods). <br>- Create PDF graphics represented by an instance of the PdfGraphics class calling the <a href="https://documentation.devexpress.com/#DocumentServer/DevExpressPdfPdfDocumentProcessor_CreateGraphicstopic">PdfDocumentProcessor.CreateGraphics </a>method. To access <strong>PdfGraphics</strong> you need to reference the <strong>DevExpress.Pdf.Drawing</strong> assembly. <br>- Add a link to the PDF page using the <a href="https://documentation.devexpress.com/#CoreLibraries/DevExpressPdfPdfGraphics_AddLinkToPagetopic">PdfGraphics.AddLinkToPage </a>method.<br>- Render a page with created graphics by calling the <a href="https://documentation.devexpress.com/#DocumentServer/DevExpressPdfPdfDocumentProcessor_RenderNewPagetopic">PdfDocumentProcessor.RenderNewPage</a> method.
+Use the link annotation to create a link to the destination at the required location. Call the [PdfPageFacade.AddLinkAnnotation](https://docs.devexpress.com/OfficeFileAPI/DevExpress.Pdf.PdfPageFacade.AddLinkAnnotation.overloads) method and pass the destination object and the page area as method parameters.
 
-<br/>
+## Files to Review
 
+| C# | Visual Basic |
+|---|---|
+| [Program.cs](./CS/AddLinkToPage/Program.cs) | [Program.vb](./VB/AddLinkToPage/Program.vb) |
+
+## Documentation
+
+* [Annotations in PDF Documents](https://docs.devexpress.com/OfficeFileAPI/119122/pdf-document-api/annotations)
+
+## More Examples
+
+* [PDF Document API - Add a Link to URI](https://github.com/DevExpress-Examples/pdf-document-api-add-link-to-uri)
 
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
