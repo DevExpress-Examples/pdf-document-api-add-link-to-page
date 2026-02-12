@@ -33,7 +33,7 @@ Use the link annotation to create a link to the destination at the required loca
 * [PDF Document API - Add a Link to URI](https://github.com/DevExpress-Examples/pdf-document-api-add-link-to-uri)
 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=pdf-document-api-add-link-to-page&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=pdf-document-api-add-link-to-page&~~~was_helpful=no)
 
